@@ -1,0 +1,64 @@
+body {
+    margin: 0 3em 0 3em;
+    --primary: #fff05a;
+    --primary-dark1: #ffd25a;
+    --primary-dark2: #ffaa5a;
+    --primary-dark3: #191919;
+    --primary-text: black;
+    --primary-text2: #ffff;
+    color: var(--primary-text);
+    background-color: var(--primary-dark1);
+    font-size: 18px;
+    line-height: 25px;
+}
+
+nav {
+    display: flex;
+    background-color: var(--primary);
+}
+
+.nav__links {
+    display: flex;
+    margin-left:auto;
+    list-style: none;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0px;
+}
+.logo {
+    display: grid;
+    place-items: center;
+}
+
+.container {
+    margin-top:2em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5%
+}
+
+.depreciations__card {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.toolbar {
+    background-color: var(--primary-dark3);
+    color: var(--primary-text2);
+}
+
+.form__group {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+label {
+    width: 40%;
+}
+input {
+    width: 60%;
+}
