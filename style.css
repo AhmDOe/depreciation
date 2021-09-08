@@ -62,3 +62,23 @@ label {
 input {
     width: 60%;
 }
+
+.dep__year {
+    margin-right: 40px;
+}
+
+.dep__value {
+    text-align: end;
+}
+
+.dep__year, .dep__value {
+    width: 150px;
+    border-bottom: 1px solid;
+    display: inline-block;
+    margin-bottom: 10px
+}
+
+li:hover {
+    background-color: rgba(29, 136, 74, 0.2);
+    color: rgb(49, 46, 46);
+}
