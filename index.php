@@ -40,11 +40,12 @@
 						<div class="form_actions">
 							<button type="submit"  name="btn_calculate" >Calculate</button>
 							<!-- <input type="number" readonly="true" placeholder="results" id="calculateSLD" /> -->
+							<button class="upload" name="btn_save" onclick='saveDepreciations(calculated_results,"backedn_url")'>Save</button>
 						</div>
 					</fieldset>
 				</form>
 			</div>
-
+			
 			<ul class="depreciations__results">
 				<h2>Depreciations</h2>
 			</ul>
@@ -52,7 +53,7 @@
 	</div>
 	
 	<script>
-		
+		let calculated_results = null
 		function handleSubmit(event){
 			event.preventDefault()
 			try {
@@ -61,6 +62,7 @@
 				
 				const depreciation_const = (parseInt( sl_asset_cost.value) - parseInt( sl_salvage_cost.value)) / parseFloat( sl_useful_life.value)
 				let value_over_years = get_depreciation_for_years(parseInt( sl_asset_cost.value), depreciation_const, parseInt( sl_useful_life.value))
+				calculated_results = value_over_years //save the deprciations into external variable
 				console.log({value_over_years})
 				renderDepreciation(value_over_years)
 				
@@ -82,6 +84,31 @@
 				li.innerHTML = `<span class="dep__year">Year	${index +1} </span><span class="dep__value">	GHC${value.toFixed(2)}</span>`
 				dep_results.appendChild(li)
 			})
+		}
+		
+		function saveDepreciations(deps,url_to_backend){
+			if (!deps){
+				alert('no depreciations available to be saved')
+			}
+			
+			try {
+				
+				//make ajax call to backend using fetch/axios
+				
+				
+				fetch(url_to_backend,{
+					method: 'POST',
+					body: deps,
+					mode: 'cors', // no-cors, *cors, same-origin
+					headers: {
+						'Content-Type': 'application/json'
+						// 'Content-Type': 'application/x-www-form-urlencoded',
+					},
+				}) 
+			} catch (error) {
+				alert('Saving failed, check backend log and browser console.')
+				console.error(error)
+			}
 		}
 	</script>
 </body>
